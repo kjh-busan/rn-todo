@@ -1,11 +1,10 @@
 import React from 'react';
-import { Images } from '../Images';
-import { StyleSheet, TouchableOpacity } from 'react-native';
-
+import { images } from '../images';
+import { StyleSheet, TouchableOpacity, Image } from 'react-native';
 const IconButton = ({ type }) => {
   return (
     <TouchableOpacity style={styles.iconbutton}>
-      <Images source={type} />
+      <Image source={type} />
     </TouchableOpacity>
   );
 };

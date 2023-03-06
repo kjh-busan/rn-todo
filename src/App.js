@@ -11,7 +11,7 @@ import {
 import Title from './components/Title';
 import Input from './components/Input';
 import IconButton from './components/IconButton';
-import { Images } from './Images';
+import { images } from './images';
 
 export default function App() {
   const [newTask, setNewTask] = useState('');
@@ -34,10 +34,10 @@ export default function App() {
         onChangeText={_handleTextChange}
         onSubmitEditing={_addTask}
       />
-      <IconButton type={Images.uncompleted} />
-      <IconButton type={Images.completed} />
-      <IconButton type={Images.delete} />
-      <IconButton type={Images.edit} />
+      <IconButton type={images.uncompleted} />
+      <IconButton type={images.completed} />
+      <IconButton type={images.delete} />
+      <IconButton type={images.edit} />
     </View>
   );
 }
