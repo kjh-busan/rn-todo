@@ -1,14 +1,43 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import {
+  StyleSheet,
+  Button,
+  View,
+  SafeAreaView,
+  Text,
+  Alert,
+} from 'react-native';
 import Title from './components/Title';
+import Input from './components/Input';
+import IconButton from './components/IconButton';
+import { Images } from './Images';
 
 export default function App() {
+  const [newTask, setNewTask] = useState('');
+
+  const _addTask = () => {
+    alert(`add : ${newTask}`);
+    setNewTask('');
+  };
+
+  const _handleTextChange = (text) => {
+    setNewTask(text);
+  };
+
   return (
-    <View style={styles.container}>    
-      <Title title="todo list"></Title>
-      <Text>start</Text>
+    <View style={styles.container}>
       <StatusBar style="auto" />
+      <Title title="Todo List✔️"></Title>
+      <Input
+        value={newTask}
+        onChangeText={_handleTextChange}
+        onSubmitEditing={_addTask}
+      />
+      <IconButton type={Images.uncompleted} />
+      <IconButton type={Images.completed} />
+      <IconButton type={Images.delete} />
+      <IconButton type={Images.edit} />
     </View>
   );
 }
