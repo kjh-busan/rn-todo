@@ -1,4 +1,6 @@
+import React from 'react';
 import { Images } from '../Images';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 
 const IconButton = ({ type }) => {
   return (
