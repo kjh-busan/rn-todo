@@ -9,15 +9,26 @@ import Input from './components/Input';
 import Task from './components/Task';
 
 export default function App() {
-  const [newTask, setNewTask] = useState('');
+  const [ newTask, setNewTask ] = useState('');
+  const [ newText, setNewText ] = useState('');
+  const [ taskList, setTaskList ] = useState([]);
 
   const _addTask = () => {
-    alert(`add : ${newTask}`);
+    const newTask = {
+      id: Date.now(),
+      textTodo: newText,
+      completed: false,
+    };
+
+    taskList.push(newTask);
+    // alert("taskList: " + taskList.length);
+    setTaskList(taskList);
+    setNewText('');
     setNewTask('');
   };
 
   const _handleTextChange = (text) => {
-    setNewTask(text);
+    setNewText(text);
   };
 
   return (
@@ -25,15 +36,16 @@ export default function App() {
       <StatusBar style="auto" />
       <Title title="Todo List✔️"></Title>
       <Input
-        value={newTask}
+        value={newText}
         onChangeText={_handleTextChange}
         onSubmitEditing={_addTask}
       />
-        <Task text="todo list 1" />
-        <Task text="todo list 2" />
-        <Task text="todo list 3" />
-        <Task text="todo list 4" />
-        <Task text="todo list 5" />
+      {
+        taskList.map((task) => 
+        <Task key={task.id} task={task} />
+        )
+      }
+
     </View>
   );
 }

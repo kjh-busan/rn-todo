@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { images } from '../images';
 import {
   Dimensions, 
@@ -8,13 +8,20 @@ import {
 } from 'react-native';
 import IconButton from './IconButton';
 
-const Task = ({ text }) => {
+// const [ task, setTask ] = useState({});
+const Task = ({ task }) => {
+  function checkComplete() {
+    // setTask(!task.completed);
+    alert('task object complete state', task.completed);
+  }
+
   return (
     <View style={styles.container}>
-      <IconButton type={images.uncompleted} />
-      <Text style={{ fontSize: 20, flex: 1 }}>{text}</Text>
-      <IconButton type={images.edit} />
-      <IconButton type={images.delete} />
+      {
+        task.completed
+        ? <><IconButton onPressOut={() => checkComplete()} type={images.completed} /><Text style={{ fontSize: 20, flex: 1 }}>{task.textTodo}</Text><IconButton type={images.delete} /></>
+        : <><IconButton type={images.uncompleted} /><Text style={{ fontSize: 20, flex: 1 }}>{task.textTodo}</Text><IconButton type={images.edit} /></>
+      }
     </View>
   );
 };
