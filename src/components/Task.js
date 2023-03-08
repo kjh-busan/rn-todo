@@ -19,7 +19,12 @@ const Task = ({ task }) => {
     <View style={styles.container}>
       {
         task.completed
-        ? <><IconButton onPressOut={() => checkComplete()} type={images.completed} /><Text style={{ fontSize: 20, flex: 1 }}>{task.textTodo}</Text><IconButton type={images.delete} /></>
+        ? <>
+            <TouchableOpacity 
+            onPressOut={() => checkComplete()} >
+              <IconButton type={images.completed} /><Text style={{ fontSize: 20, flex: 1 }}>{task.textTodo}</Text><IconButton type={images.delete} />
+            </TouchableOpacity>
+          </>
         : <><IconButton type={images.uncompleted} /><Text style={{ fontSize: 20, flex: 1 }}>{task.textTodo}</Text><IconButton type={images.edit} /></>
       }
     </View>
