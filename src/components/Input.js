@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dimensions, StyleSheet, Text, TextInput } from 'react-native';
+import { Dimensions, StyleSheet, TextInput } from 'react-native';
 
 const Input = ({ value, onChangeText, onSubmitEditing }) => {
   return (
