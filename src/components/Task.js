@@ -12,7 +12,7 @@ import IconButton from './IconButton';
 const Task = ({ task }) => {
   function checkComplete() {
     // setTask(!task.completed);
-    alert('task object complete state', task.completed);
+    // alert('task object complete state', task.completed);
   }
 
   return (
@@ -21,9 +21,10 @@ const Task = ({ task }) => {
         task.completed
         ? <>
             <TouchableOpacity 
-            onPressOut={() => checkComplete()} >
-              <IconButton type={images.completed} /><Text style={{ fontSize: 20, flex: 1 }}>{task.textTodo}</Text><IconButton type={images.delete} />
+              onPressOut={() => checkComplete()} >
+              <IconButton type={images.completed} />
             </TouchableOpacity>
+            <Text style={{ fontSize: 20, flex: 1 }}>{task.textTodo}</Text><IconButton type={images.delete} />
           </>
         : <><IconButton type={images.uncompleted} /><Text style={{ fontSize: 20, flex: 1 }}>{task.textTodo}</Text><IconButton type={images.edit} /></>
       }
