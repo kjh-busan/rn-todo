@@ -8,19 +8,22 @@ import {
 } from 'react-native';
 import IconButton from './IconButton';
 
-// const [ task, setTask ] = useState({});
-const Task = ({ task }) => {
-  const checkComplete = () => {
-    // setTask(!task.completed);
-    alert('task object complete state', task.completed);
-  }
-
+const Task = ({ item, deleteTask, toggleTask }) => {
   return (
     <View style={styles.container}>
-      <IconButton type={images.uncompleted} />
-      <Text style={{ fontSize: 20, flex: 1 }}>{item.text}</Text>
-      <IconButton type={images.edit} />
-      <IconButton type={images.delete} id={item.id} onPressOut={deleteTask}/>
+      { 
+        item.completed
+        ? <>
+            <IconButton type={images.completed} />
+            <Text style={{ fontSize: 20, flex: 1 }}>{item.text}</Text>
+            <IconButton type={images.delete} id={item.id} onPressOut={deleteTask}/>
+          </>
+        : <>
+            <IconButton type={images.uncompleted} id={item.id} onPressOut={toggleTask} />
+            <Text style={{ fontSize: 20, flex: 1 }}>{item.text}</Text>
+            <IconButton type={images.edit} id={item.id}/>
+          </>
+      }
     </View>
   );
 };

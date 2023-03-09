@@ -11,7 +11,7 @@ const IconButton = ({ type, onPressOut, id }) => {
   };
 
   return (
-    <TouchableOpacity style={styles.iconbutton} onPressOut={_onPressOut}>
+    <TouchableOpacity style={styles.iconbutton} onPressOut={_onPressOut} >
       <Image source={type} />
     </TouchableOpacity>
   );

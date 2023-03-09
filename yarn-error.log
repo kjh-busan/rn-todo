@@ -1,8 +1,8 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarnpkg add react-native-web@~0.18.10 @expo/webpack-config@^18.0.1
+  /usr/local/bin/node /usr/local/bin/yarnpkg add react-dom
 
 PATH: 
-  /Users/gumika/workspace/rn-todo/node_modules/.bin:/Users/gumika/workspace/node_modules/.bin:/Users/gumika/node_modules/.bin:/Users/node_modules/.bin:/node_modules/.bin:/usr/local/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/node-gyp-bin:/Users/gumika/workspace/rn-todo/node_modules/.bin:/Users/gumika/.rvm/gems/ruby-2.7.6/bin:/Users/gumika/.rvm/gems/ruby-2.7.6@global/bin:/Users/gumika/.rvm/rubies/ruby-2.7.6/bin:/Users/gumika/.rbenv/shims:/Users/gumika/.rbenv/bin:/usr/local/opt/ruby/bin:/Users/gumika/.rbenv/shims:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/gumika/.rvm/gems/ruby-2.7.6/bin:/Users/gumika/.rvm/gems/ruby-2.7.6@global/bin:/Users/gumika/.rvm/rubies/ruby-2.7.6/bin:/Users/gumika/.rbenv/shims:/Users/gumika/.rbenv/bin:/usr/local/opt/ruby/bin:/Users/gumika/.rvm/bin
+  /Users/gumika/.rvm/gems/ruby-2.7.6/bin:/Users/gumika/.rvm/gems/ruby-2.7.6@global/bin:/Users/gumika/.rvm/rubies/ruby-2.7.6/bin:/Users/gumika/.rbenv/shims:/Users/gumika/.rbenv/bin:/usr/local/opt/ruby/bin:/Users/gumika/.rbenv/shims:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/gumika/.rvm/gems/ruby-2.7.6/bin:/Users/gumika/.rvm/gems/ruby-2.7.6@global/bin:/Users/gumika/.rvm/rubies/ruby-2.7.6/bin:/Users/gumika/.rbenv/shims:/Users/gumika/.rbenv/bin:/usr/local/opt/ruby/bin:/Users/gumika/.rvm/bin
 
 Yarn version: 
   1.22.19
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: EACCES: permission denied, mkdir '/Users/gumika/workspace/rn-todo/node_modules/@expo/package-manager/node_modules/cross-spawn'
+  Error: EACCES: permission denied, unlink '/Users/gumika/workspace/rn-todo/node_modules/.bin/atob'
 
 npm manifest: 
   {

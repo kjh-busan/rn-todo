@@ -11,13 +11,7 @@ import Task from './components/Task';
 
 export default function App() {
   const [newTask, setNewTask] = useState('');
-  const [tasks, setTasks] = useState({
-    1: { id: '1', text: 'todo list 1', completed: false },
-    2: { id: '2', text: 'todo list 2', completed: false },
-    3: { id: '3', text: 'todo list 3', completed: false },
-    4: { id: '4', text: 'todo list 4', completed: false },
-    5: { id: '5', text: 'todo list 5', completed: false },
-  });
+  const [tasks, setTasks] = useState([]);
 
   const _addTask = () => {
     const ID = Date.now().toString();
@@ -28,13 +22,23 @@ export default function App() {
     setTasks({ ...tasks, ...newTaskObject });
   };
 
-  //삭제 함수
   const _deleteTask = (id) => {
     const currentTasks = Object.assign({}, tasks);
     delete currentTasks[id];
     setTasks(currentTasks);
   };
 
+  const _toggleTask = (id) => {
+    const item = tasks.filter(task => task.id === id ? task.completed : null);
+    alert("item : " + item);
+
+
+    // const currentTasks = Object.assign({}, tasks);
+    // currentTasks[id].text = "!currentTasks[id].completed";
+    // currentTasks[id]['completed'] = !currentTasks[id]['completed'];
+    setTasks(currentTasks);
+  };
+  
   const _handleTextChange = (text) => {
     setNewTask(text);
   };
@@ -52,7 +56,12 @@ export default function App() {
         {Object.values(tasks)
           .reverse()
           .map((item) => (
-            <Task key={item.id} item = {item} deleteTask={_deleteTask}/>
+            <Task
+              key={item.id}
+              item={item}
+              deleteTask={_deleteTask}
+              toggleTask={_toggleTask}
+            />
           ))}
       </ScrollView>
     </View>
