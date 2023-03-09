@@ -11,7 +11,14 @@ import Task from './components/Task';
 
 export default function App() {
   const [newTask, setNewTask] = useState('');
-  const [tasks, setTasks] = useState([]);
+  // const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(
+    {
+      1: {id: 1, text: "Hello1", completed: true},
+      2: {id: 2, text: "Hello todo 2", completed: true},
+      3: {id: 3, text: "Hello3", completed: false},
+    }
+);
 
   const _addTask = () => {
     const ID = Date.now().toString();
@@ -29,13 +36,15 @@ export default function App() {
   };
 
   const _toggleTask = (id) => {
-    const item = tasks.filter(task => task.id === id ? task.completed : null);
+    const currentTasks = Object.assign({}, tasks);
+    currentTasks[id]['completed'] = !currentTasks[id]['completed'];
+    setTasks(currentTasks);
+  };
+  
+  const _updateTask = (id, item) => {
     alert("item : " + item);
-
-
-    // const currentTasks = Object.assign({}, tasks);
-    // currentTasks[id].text = "!currentTasks[id].completed";
-    // currentTasks[id]['completed'] = !currentTasks[id]['completed'];
+    const currentTasks = Object.assign({}, tasks);
+    currentTasks[id].text = item;
     setTasks(currentTasks);
   };
   
@@ -61,6 +70,7 @@ export default function App() {
               item={item}
               deleteTask={_deleteTask}
               toggleTask={_toggleTask}
+              updateTask={_updateTask}
             />
           ))}
       </ScrollView>
