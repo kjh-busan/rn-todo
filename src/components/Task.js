@@ -10,19 +10,18 @@ import {
 import IconButton from './IconButton';
 
 const Task = ({ item, deleteTask, toggleTask, updateTask, isEditMode  }) => {
-  const [ isEditing, setIsEdting ] = useState(isEditMode);
+  const [ isEditing, setIsEditing ] = useState(isEditMode);
   const [ text, setText ] = useState(item.text);
 
-  const _handleTextChange = ( text ) =>  {
-    // alert('isEditing before : ' + isEditing);
+  const _handleTextChange = ( text ) => {
     setText(text);
-    // setIsEdting(!isEditing);
-    // alert(text);
-    // alert('isEditing after : ' + isEditing);
-
   };
-  
-  const isHandleUpdateButton = () => setIsEdting(!isEditing);
+  const _onSubmitEditing = () => {
+    const editedTask = Object.assign({}, item, { text });
+    setIsEditing(!isEditing);
+    updateTask(editedTask);
+  };
+  const _handleUpdateButtonPress = () => setIsEditing(!isEditing);
 
   return (
     <View style={styles.container}>
@@ -38,12 +37,13 @@ const Task = ({ item, deleteTask, toggleTask, updateTask, isEditMode  }) => {
             value={text}
             autoFocus={true}
             onChangeText={_handleTextChange}
-            onSubmitEditing={updateTask}
+            onSubmitEditing={_onSubmitEditing}
           />
         : <Text style={item.completed ? styles.completed : styles.text}>{item.text}</Text>
       }
-      {(item.completed) || (
-        <IconButton type={images.edit} onPressOut={isHandleUpdateButton} />)}
+      {item.completed || ( isEditing ||
+        <IconButton type={images.edit} onPressOut={_handleUpdateButtonPress} />)
+      }
       {item.completed && (
         <IconButton type={images.delete} id={item.id} onPressOut={deleteTask}/>
       )}

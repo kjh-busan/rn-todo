@@ -41,13 +41,13 @@ export default function App() {
     setTasks(currentTasks);
   };
   
-  const _updateTask = (id) => {
-    const currentTasks = Object.assign({}, tasks);
-    alert("currentTasks[id]['text'] : " + currentTasks[id]['text']);
+  const _updateTask = (item) => {
+    const currentTasks = Object.assign({},tasks);
+    // alert(item);
+    currentTasks[item.id]=item;
+    setTasks(currentTasks);
+  }
 
-    // currentTasks[id]['text']  = "item";
-    // setTasks(currentTasks);
-  };
   
   const _handleTextChange = (text) => {
     setNewTask(text);
