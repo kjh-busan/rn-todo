@@ -9,17 +9,16 @@ import {
 } from 'react-native';
 import IconButton from './IconButton';
 
-const Task = ({ item, deleteTask, toggleTask, updateTask }) => {
+const Task = ({ item, deleteTask, toggleTask, updateTask,  }) => {
   const [ isEditing, setIsEdting ] = useState(false);
   const [ text, setText ] = useState(item.text);
 
-  const _handleTextChange = () =>  {
+  const _handleTextChange = (text) =>  {
     setText(text);
+    // alert(text);
   };
   
-  const isHandleUpdateButton = () => {
-    setIsEdting(!isEditing);
-  };
+  const isHandleUpdateButton = () => setIsEdting(!isEditing);
 
   return (
     <View style={styles.container}>
@@ -31,7 +30,9 @@ const Task = ({ item, deleteTask, toggleTask, updateTask }) => {
       />
       {isEditing 
         ? <TextInput
-            value={item.text}
+            style={styles.input}
+            value={text}
+            autoFocus={true}
             onChangeText={_handleTextChange}
             onSubmitEditing={updateTask}
           />
