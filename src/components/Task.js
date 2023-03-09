@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { images } from '../images';
 import {
   Dimensions, 
@@ -10,24 +10,17 @@ import IconButton from './IconButton';
 
 // const [ task, setTask ] = useState({});
 const Task = ({ task }) => {
-  function checkComplete() {
+  const checkComplete = () => {
     // setTask(!task.completed);
-    // alert('task object complete state', task.completed);
+    alert('task object complete state', task.completed);
   }
 
   return (
     <View style={styles.container}>
-      {
-        task.completed
-        ? <>
-            <TouchableOpacity 
-              onPressOut={() => checkComplete()} >
-              <IconButton type={images.completed} />
-            </TouchableOpacity>
-            <Text style={{ fontSize: 20, flex: 1 }}>{task.textTodo}</Text><IconButton type={images.delete} />
-          </>
-        : <><IconButton type={images.uncompleted} /><Text style={{ fontSize: 20, flex: 1 }}>{task.textTodo}</Text><IconButton type={images.edit} /></>
-      }
+      <IconButton type={images.uncompleted} />
+      <Text style={{ fontSize: 20, flex: 1 }}>{item.text}</Text>
+      <IconButton type={images.edit} />
+      <IconButton type={images.delete} id={item.id} onPressOut={deleteTask}/>
     </View>
   );
 };

@@ -1,9 +1,17 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, Image } from 'react-native';
 
-const IconButton = ({ type }) => {
+const IconButton = ({ type, onPressOut, id }) => {
+  IconButton.defaultProps = {
+    onPressOut: () => {},
+  };
+  
+  const _onPressOut = () => {
+    onPressOut(id);
+  };
+
   return (
-    <TouchableOpacity style={styles.iconbutton}>
+    <TouchableOpacity style={styles.iconbutton} onPressOut={_onPressOut}>
       <Image source={type} />
     </TouchableOpacity>
   );
