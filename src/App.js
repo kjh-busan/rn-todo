@@ -41,11 +41,12 @@ export default function App() {
     setTasks(currentTasks);
   };
   
-  const _updateTask = (id, item) => {
-    alert("item : " + item);
+  const _updateTask = (id) => {
     const currentTasks = Object.assign({}, tasks);
-    currentTasks[id].text = item;
-    setTasks(currentTasks);
+    alert("currentTasks[id]['text'] : " + currentTasks[id]['text']);
+
+    // currentTasks[id]['text']  = "item";
+    // setTasks(currentTasks);
   };
   
   const _handleTextChange = (text) => {
@@ -71,6 +72,7 @@ export default function App() {
               deleteTask={_deleteTask}
               toggleTask={_toggleTask}
               updateTask={_updateTask}
+              isEditMode={false}
             />
           ))}
       </ScrollView>

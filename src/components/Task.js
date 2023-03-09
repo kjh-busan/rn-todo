@@ -9,13 +9,17 @@ import {
 } from 'react-native';
 import IconButton from './IconButton';
 
-const Task = ({ item, deleteTask, toggleTask, updateTask,  }) => {
-  const [ isEditing, setIsEdting ] = useState(false);
+const Task = ({ item, deleteTask, toggleTask, updateTask, isEditMode  }) => {
+  const [ isEditing, setIsEdting ] = useState(isEditMode);
   const [ text, setText ] = useState(item.text);
 
-  const _handleTextChange = (text) =>  {
+  const _handleTextChange = ( text ) =>  {
+    // alert('isEditing before : ' + isEditing);
     setText(text);
+    // setIsEdting(!isEditing);
     // alert(text);
+    // alert('isEditing after : ' + isEditing);
+
   };
   
   const isHandleUpdateButton = () => setIsEdting(!isEditing);
