@@ -18,26 +18,39 @@ const Task = ({ item, deleteTask, toggleTask, updateTask, isEditMode  }) => {
   };
   const _onSubmitEditing = () => {
     const editedTask = Object.assign({}, item, { text });
-    setIsEditing(!isEditing);
+    setIsEditing(false);
     updateTask(editedTask);
   };
-  const _handleUpdateButtonPress = () => setIsEditing(!isEditing);
+  const _toggleTask = () => {
+    // const editedTask = Object.assign({}, item, { text });
+
+    setIsEditing(false);
+    // alert('_toggleTask.isEditing = ', isEditing);
+
+    toggleTask(item.id);
+  };
+  const _handleUpdateButtonPress = () => setIsEditing(true);
+  const _handleBlur = () => setIsEditing(false); 
+
 
   return (
     <View style={styles.container}>
+      {isEditing ||
       <IconButton
         style={item.completed ? styles.themeGray : styles.themeBlack}
         type={item.completed ? images.completed : images.uncompleted}
         id={item.id}
-        onPressOut={toggleTask}
-      />
-      {isEditing 
+        onPressOut={_toggleTask}
+      />}
+      {isEditing
         ? <TextInput
             style={styles.input}
             value={text}
             autoFocus={true}
+            onFocus={_handleUpdateButtonPress}
             onChangeText={_handleTextChange}
             onSubmitEditing={_onSubmitEditing}
+            onBlur={_handleBlur}
           />
         : <Text style={item.completed ? styles.completed : styles.text}>{item.text}</Text>
       }
@@ -80,11 +93,14 @@ const styles = StyleSheet.create({
     color: 'blue',
   },
   input: {
+    width: Dimensions.get('window').width - 15,
     fontSize: 20,
+    backgroundColor: '#f1f3f5',
     borderWidth: 1,
     borderRadius: 5,
     margin: 5,
     padding: 8,
+    alignItems: 'center',
   },
 });
 

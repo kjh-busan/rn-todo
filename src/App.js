@@ -21,12 +21,17 @@ export default function App() {
 );
 
   const _addTask = () => {
-    const ID = Date.now().toString();
-    const newTaskObject = {
-      [ID]: { id: ID, text: newTask, completed: false },
-    };
-    setNewTask('');
-    setTasks({ ...tasks, ...newTaskObject });
+    if (newTask.trim().length > 0) {
+      const ID = Date.now().toString();
+      const newTaskObject = {
+        [ID]: { id: ID, text: newTask, completed: false },
+      };
+      setNewTask('');
+      setTasks({ ...tasks, ...newTaskObject });
+    } else {
+      alert('Please Input a Task');
+      setNewTask('');
+    }
   };
 
   const _deleteTask = (id) => {
