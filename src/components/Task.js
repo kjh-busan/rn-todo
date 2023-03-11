@@ -24,8 +24,11 @@ const Task = ({ item, deleteTask, toggleTask, updateTask, isEditing, setIsEditin
     setIsEditing(false);
     toggleTask(item.id);
   };
-  const _handleUpdateButtonPress = () => setIsEditing(true);
-  const _handleBlur = () => setIsEditing(false); 
+  // const _handleUpdateButtonPress = () => {
+  //   setIsEditing(true);
+  // }
+  const _handleUpdateButtonPress = setIsEditing(true);
+  const _handleBlur = setIsEditing(false);
 
   return (
     <View style={styles.container}>
@@ -71,7 +74,6 @@ const styles = StyleSheet.create({
     flex: 1,
     color: 'gray',
     textDecorationLine: 'line-through',
-    // textDecorationColor: 'gray',
   },
   text: {
     fontSize: 20,
