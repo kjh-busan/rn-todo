@@ -9,8 +9,7 @@ import {
 } from 'react-native';
 import IconButton from './IconButton';
 
-const Task = ({ item, deleteTask, toggleTask, updateTask, isEditMode  }) => {
-  const [ isEditing, setIsEditing ] = useState(isEditMode);
+const Task = ({ item, deleteTask, toggleTask, updateTask, isEditing, setIsEditing }) => {
   const [ text, setText ] = useState(item.text);
 
   const _handleTextChange = ( text ) => {
@@ -22,16 +21,11 @@ const Task = ({ item, deleteTask, toggleTask, updateTask, isEditMode  }) => {
     updateTask(editedTask);
   };
   const _toggleTask = () => {
-    // const editedTask = Object.assign({}, item, { text });
-
     setIsEditing(false);
-    // alert('_toggleTask.isEditing = ', isEditing);
-
     toggleTask(item.id);
   };
   const _handleUpdateButtonPress = () => setIsEditing(true);
   const _handleBlur = () => setIsEditing(false); 
-
 
   return (
     <View style={styles.container}>

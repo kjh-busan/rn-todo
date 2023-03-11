@@ -11,7 +11,7 @@ import Task from './components/Task';
 
 export default function App() {
   const [newTask, setNewTask] = useState('');
-  // const [tasks, setTasks] = useState([]);
+  const [ isEditing, setIsEditing ] = useState(false);
   const [tasks, setTasks] = useState(
     {
       1: {id: 1, text: "Hello1", completed: true},
@@ -48,12 +48,10 @@ export default function App() {
   
   const _updateTask = (item) => {
     const currentTasks = Object.assign({},tasks);
-    // alert(item);
     currentTasks[item.id]=item;
     setTasks(currentTasks);
   }
 
-  
   const _handleTextChange = (text) => {
     setNewTask(text);
   };
@@ -77,7 +75,8 @@ export default function App() {
               deleteTask={_deleteTask}
               toggleTask={_toggleTask}
               updateTask={_updateTask}
-              isEditMode={false}
+              isEditing={isEditing}
+              setIsEditing={setIsEditing}
             />
           ))}
       </ScrollView>
