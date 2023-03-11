@@ -9,26 +9,27 @@ import {
 } from 'react-native';
 import IconButton from './IconButton';
 
-const Task = ({ item, deleteTask, toggleTask, updateTask, isEditing, setIsEditing }) => {
+const Task = ({ item, deleteTask, toggleTask, updateTask }) => {
   const [ text, setText ] = useState(item.text);
+  const [ isEditing, setIsEditing ] = useState(false);
 
-  const _handleTextChange = ( text ) => {
-    setText(text);
-  };
+  const _handleTextChange = (text) => setText(text);
   const _onSubmitEditing = () => {
     const editedTask = Object.assign({}, item, { text });
     setIsEditing(false);
     updateTask(editedTask);
   };
-  const _toggleTask = () => {
+  const _toggleTask = () => toggleTask(item.id);
+
+  const _handleUpdateButtonPress = () => {
+    setIsEditing(true);
+  }
+  const _handleBlur = () => {
     setIsEditing(false);
-    toggleTask(item.id);
-  };
-  // const _handleUpdateButtonPress = () => {
-  //   setIsEditing(true);
-  // }
-  const _handleUpdateButtonPress = setIsEditing(true);
-  const _handleBlur = setIsEditing(false);
+  }
+  
+  // const _handleUpdateButtonPress = () => console.log('_sdfsdfhandleBlur false');
+  // const _handleBlur = () => console.log('_handleBlur false');
 
   return (
     <View style={styles.container}>
